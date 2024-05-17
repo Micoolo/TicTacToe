@@ -1,0 +1,4 @@
+Build/
+CMakelists.txt
+*.json
+*.exe
