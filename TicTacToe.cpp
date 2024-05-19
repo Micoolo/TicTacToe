@@ -12,13 +12,7 @@ TicTacToe::TicTacToe(int size, int NumbersInRow) : board(size, std::vector<char>
 void TicTacToe::run()
 {
     while (true) {
-        int row, col;
-
-        // std::cout << "Player 1 turn: ";
-        // std::cin >> row >> col;
-        // if(isValidMove(row, col)) {
-        //     board[row][col] = 'O';
-        // }  
+        int row, col; 
 
         std::cout << "Player 2 turn: ";
         std::cin >> row >> col;
@@ -205,7 +199,7 @@ void TicTacToe::AI(std::vector<std::vector<char>>& board, char sign, char opSign
 int TicTacToe::minimax(std::vector<std::vector<char>>& board, int depth, bool isMaximizingPlayer, char sign, char opSign, int alpha, int beta)
 {
     if (depth == maxDepth || checkWin(sign) || checkWin(opSign) || checkDraw()) {
-        // need to add static evaluation function
+        return staticEvaluation(board, sign, opSign);
     }
 
     if (isMaximizingPlayer) {
@@ -247,3 +241,13 @@ int TicTacToe::minimax(std::vector<std::vector<char>>& board, int depth, bool is
     }
 }
 
+int TicTacToe::staticEvaluation(std::vector<std::vector<char>>& board, int sign, int opSign)
+{
+    if (checkWin(sign)) {
+        return 10;
+    } else if (checkWin(opSign)) {
+        return -10;
+    } else {
+        return 0;
+    }
+}

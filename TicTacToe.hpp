@@ -21,6 +21,8 @@ private:
 
     int minimax(std::vector<std::vector<char>>& board, int depth, bool isMaximizingPlayer, char sign, char opSign, int alpha, int beta);
 
+    int staticEvaluation(std::vector<std::vector<char>>& board, int sign, int opSign);
+    
 public:
     TicTacToe(int size, int NumbersInRow);
     void run();
